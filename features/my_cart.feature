@@ -1,7 +1,8 @@
 Feature: Add to cart and see the Checkout price
+  Background: Open main page
+    Given I am on the main page
 
   Scenario Outline: Check that there are enough elements on the page after a search
-    Given I am on the main page
     When I enter "<search_term>" in the search input
     And I press the search button
     Then I should see "<expected_count>" elements
@@ -10,7 +11,6 @@ Feature: Add to cart and see the Checkout price
       | jacket      | 12             |
 
   Scenario Outline: Add 1 jacket to the cart
-    Given I am on the main page
     When I enter "jacket" in the search input
     And I press the search button
     And I add the first jacket

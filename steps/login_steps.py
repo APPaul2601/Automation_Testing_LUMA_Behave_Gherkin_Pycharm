@@ -16,16 +16,16 @@ def step_impl(context):
     context.login_page.click_for_login_error()
 
 
-@then('Email error is displayed')
-def step_impl(context):
+@then('Email error is displayed, "{error}"')
+def step_impl(context, error):
     assert context.login_page.is_email_error_displayed()
-    assert context.login_page.email_error_contains("This is a required field.")
+    assert context.login_page.email_error_contains(error)
 
 
-@then('Password error is displayed')
-def step_impl(context):
-    assert context.login_page.is_password_error_displayed(), "Password error not displayed"
-    assert context.login_page.password_error_contains("This is a required field."), "Password error text incorrect"
+@then('Password error is displayed, "{error}"')
+def step_impl(context, error):
+    assert context.login_page.is_password_error_displayed()
+    assert context.login_page.password_error_contains(error)
 
 
 @when('I enter "hello@yahoo.com" in the email input on the login page')
@@ -43,10 +43,7 @@ def step_impl(context):
     context.login_page.click_button()
 
 
-@then('I should see "The account sign-in was incorrect or your account is disabled temporarily. Please wait and try '
-      'again later." message')
-def step_impl(context):
-    assert context.login_page.is_main_error_displayed(), "Main error not displayed"
-    assert context.login_page.main_error_contains("The account sign-in was incorrect or your account is disabled "
-                                                  "temporarily. Please wait and try again later."), ("Main error text "
-                                                                                                     "incorrect")
+@then('I should see the main error "{error}" message')
+def step_impl(context, error):
+    assert context.login_page.is_main_error_displayed()
+    assert context.login_page.main_error_contains(error)
