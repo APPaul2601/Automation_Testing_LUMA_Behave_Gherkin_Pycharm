@@ -28,14 +28,14 @@ def step_impl(context, error):
     assert context.login_page.password_error_contains(error)
 
 
-@when('I enter "hello@yahoo.com" in the email input on the login page')
-def step_impl(context):
-    context.login_page.set_email('hello@yahoo.com')
+@when('I enter "{email}" in the email input on the login page')
+def step_impl(context, email):
+    context.login_page.set_email(email)
 
 
-@when('I enter "passwoRD123" in the password input on the login page')
-def step_impl(context):
-    context.login_page.set_password('passwoRD123')
+@when('I enter "{password}" in the password input on the login page')
+def step_impl(context, password):
+    context.login_page.set_password(password)
 
 
 @when('I press the login button')

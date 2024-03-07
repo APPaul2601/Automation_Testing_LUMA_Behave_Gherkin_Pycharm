@@ -13,7 +13,7 @@ class MyCartPage(BasePage):
     BUTTON_ADD_TO_CART = (By.ID, "product-addtocart-button")
     BUTTON_SHOW_CART = (By.CSS_SELECTOR, ".action.showcart")
     BUTTON_VIEW_CART = (By.CSS_SELECTOR, "[class~='viewcart']")
-    ORDER_TOTAL = (By.XPATH, "//*[@id='cart-totals']/div/table/tbody/tr[3]/td/strong/span")
+    ORDER_TOTAL = (By.XPATH, "//span[@class='price' and @data-bind='text: getValue()'][contains(text(), '$57.00')]")
 
     def open(self):
         self.driver.get(self.MAIN_PAGE_URL)

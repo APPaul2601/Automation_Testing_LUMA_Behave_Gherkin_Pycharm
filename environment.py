@@ -10,5 +10,6 @@ def before_all(context):
     context.register_page = RegisterPage()
     context.my_cart_page = MyCartPage()
 
+
 def after_all(context):
     context.browser.close()
